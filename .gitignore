@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+
+.env
+.env.local
+
+*.log
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+backend/node_modules/
+backend/dist/
+backend/build/
