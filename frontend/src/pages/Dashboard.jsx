@@ -3,7 +3,7 @@ import { User, Verified } from "lucide-react";
 import { useStoreAuth } from "../store/authStore";
 import SkeletonPost from "../components/SkeletonPosts";
 import { motion } from "framer-motion";
-import Login from "./Login";
+import Login from "../auth/Login";
 
 const LikedPosts = lazy(() => import("./LikedPosts"));
 

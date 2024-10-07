@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { boolean } from "webidl-conversions";
+import { todoSchema } from './todo.model.js';
 
 const userSchema = new mongoose.Schema(
   {
@@ -24,12 +24,12 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    todos: [todoSchema],
     resetPasswordToken: String,
     resetPasswordExpiresAt: Date,
     verificationToken: String,
     verificationTokenExpiresAt: Date,
   },
-
   { timestamps: true }
 );
 

@@ -8,18 +8,18 @@ import ThemeToggle from "./UI/ThemeToggle";
 import Blog from "./pages/Blog/Blog";
 import Projects from "./pages/Projects/Projects";
 import BlogPostDetail from "./pages/Blog/BlogDetails";
-import Login from "./pages/Login";
-import { SignUp } from "./pages/sign-up";
 import { EmailVerification } from "./UI/EmailVerification";
 import { Toaster } from "react-hot-toast";
 import { useStoreAuth } from "./store/authStore";
 import Dashboard from "./pages/Dashboard";
-import { Loader2 } from "lucide-react";
-import { ForgotPassword } from "./pages/Projects/ForgotPassword";
-import  ResetPasswordPage  from "./pages/ResetPasswordPage";
+import { ForgotPassword } from "./auth/ForgotPassword";
+import  ResetPasswordPage  from "./auth/ResetPasswordPage";
+import Login from './auth/Login';
+import { SignUp } from './auth/sign-up';
 
 function App() {
   const { checkAuth, isAuthenticated, user, isCheckingAuth } = useStoreAuth();
+  
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);

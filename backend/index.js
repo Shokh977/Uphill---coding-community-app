@@ -5,6 +5,7 @@ import authRoutes from "./Routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
+import todoRoutes from "./Routes/todo.route.js";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.json()); // allows to parse incoming requests : req.body
 app.use(cookieParser()); // allows us to parse incoming cookies
 
 app.use("/api/auth", authRoutes);
+app.use("/api/todos", todoRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));

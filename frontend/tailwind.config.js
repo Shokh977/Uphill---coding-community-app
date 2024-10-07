@@ -9,8 +9,13 @@ module.exports = {
         'dark': "#1a1a2e",
         "light" : 'linear-gradient(90deg, #d8b4fe, #fbcfe8)'
       },
+      perspective: {
+        'none': 'none',
+        '500': '500px',
+        '1000': '1000px',
+      },
     },
   },
   darkMode: 'class',
-  plugins: [],
+  plugins: [require("@xpd/tailwind-3dtransforms")], 
 };
