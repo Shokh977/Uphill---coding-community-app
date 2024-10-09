@@ -51,7 +51,7 @@ const Card = ({ title, description, image, link }) => {
 
 const Cards = () => {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
       {projects.map((project, index) => (
         <Card
           key={index}

@@ -38,7 +38,7 @@ const blogPost = {
 
 const testimonials = [
   {
-    name: "John Doe",
+    name: "shokhrukh",
     role: "Web Developer",
     text: "Passionate frontend developer with a love for crafting intuitive, beautiful, and responsive web applications. I enjoy bringing ideas to life in the browser.",
     image: "/testemonial/portfolio.jpg",
@@ -93,8 +93,8 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="relative h-80  dark:bg-gray-800 rounded-lg shadow-md overflow-hidden p-4 flex flex-col items-center">
-      <img src={product.image} alt={product.name} className="p-4 w-[50%] " />
+    <div className="relative h-auto md:h-80 dark:border-none border dark:bg-gray-800 rounded-lg shadow-md overflow-hidden p-4 flex md:flex-col gap-4 items-center">
+      <img src={product.image} alt={product.name} className="p-4 w-[45%] " />
       <div className="flex md:flex-row flex-col md:gap-20 gap-2 justify-between items-center">
         <div className="flex flex-col gap-2">
           <h3 className="text-lg font-semibold">{product.name}</h3>{" "}
@@ -116,7 +116,7 @@ const ProductCard = ({ product }) => {
       )}
       {isAdded && !isAnimating && (
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 rounded-lg">
-          <h3 className="text-xl font-semibold">Added to Cart!</h3>
+          <h3 className="text-xl font-semibold text-white">Added to Cart!</h3>
         </div>
       )}
     </div>
@@ -191,7 +191,7 @@ export const UserCard = ({ user }) => {
   );
 };
 
-//
+
 // PricingCard.jsx
 export const PricingCard = ({
   planName,
@@ -380,7 +380,7 @@ const MainCard = () => {
 
 const CardsComponent = () => {
   return (
-    <div className=" grid md:grid-cols-3 gap-4 p-6">
+    <div className=" grid md:grid-cols-3 gap-4 my-10">
       <ProductCard product={product} />
       <UserCard user={user} />
       <div className="flex justify-center">

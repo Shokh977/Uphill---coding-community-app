@@ -1,6 +1,7 @@
 import React from "react";
 import { projectsData } from "./ProjectsData";
-import { GithubIcon, Link, Link2, Link2Icon, LinkIcon } from "lucide-react";
+import { GithubIcon, LinkIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Project = () => {
   return (
@@ -14,14 +15,14 @@ const Project = () => {
               index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
             } mb-12 sm:mb-16 items-center`}>
             {/* Text Section */}
-            <div className="w-full md:w-1/2 p-4 space-y-4">
+            <div className="w-full md:w-1/2 p-4 space-y-4 ">
               <h2 className="text-3xl font-extrabold tracking-wide text-indigo-600">
                 {project.name}
               </h2>
               <p className="text-gray-600">
                 <span
                   key={""}
-                  className="bg-gray-200 text-sm px-2 py-1 rounded-full">
+                  className="bg-gray-200 text-sm px-2 py-1rounded-full">
                   Technologies: {project.technologies.join(", ")}
                 </span>
               </p>
@@ -30,8 +31,11 @@ const Project = () => {
               </p>
               <p className="text-sm sm:text-base">{project.description}</p>
               <div className="flex gap-6 items-center">
-                <p className="text-violet-500 text-2xl items-center flex gap-2 cursor-pointer">
-                  visit <LinkIcon />
+                <p className="text-violet-500 text-2xl cursor-pointer">
+                  <Link className="items-center flex gap-2" to = {project.http}>
+                                    visit <LinkIcon />
+
+                  </Link>
                 </p>
                 <a
                   className="hover:text-violet-500 transition-transform duration-200"
@@ -42,31 +46,40 @@ const Project = () => {
             </div>
 
             <div className="w-full md:w-1/2 flex flex-wrap gap-4 p-4 relative justify-around">
-  {project.images.map((image, imgIndex) => (
-    <div
-      key={imgIndex}
-      className={`relative w-36 h-36 sm:w-40 sm:h-40 shadow-lg transform-gpu ${
-        imgIndex % 2 === 0 ? 'rotate-6 translate-y-2' : 'rotate-3 -translate-y-3'
-      } ${
-        imgIndex % 3 === 0 ? 'scale-110' : 'scale-95'
-      } transition-transform duration-300 ease-in-out`}
-    >
-      <div className="hover:scale-105 transition-transform duration-300 ease-in-out w-full h-full">
-        <img
-          src={image}
-          alt="Project image"
-          className="w-full h-full object-cover rounded-lg"
-        />
-
+              {project.images.map((image, imgIndex) => (
+                <div
+                  key={imgIndex}
+                  className={`relative w-36 h-36 sm:w-40 sm:h-40 shadow-lg transform-gpu ${
+                    imgIndex % 2 === 0
+                      ? "rotate-6 translate-y-2"
+                      : "rotate-3 -translate-y-3"
+                  } ${
+                    imgIndex % 3 === 0 ? "scale-110" : "scale-95"
+                  } transition-transform duration-300 ease-in-out`}>
+                  <div className="hover:scale-105 transition-transform duration-300 ease-in-out w-full h-full">
+                    <img
+                      src={image}
+                      alt="Project image"
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}{" "}
+        <h1 className="text-xl font-semibold text-opacity-80">
+          Find Out More on my{" "}
+          <span className=" hover:text-violet-500 duration-300 underline">
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://github.com/Shokh977">
+              GitHub
+            </Link>
+          </span>
+        </h1>
       </div>
-    </div>
-  ))}
-</div>
-          </div>    
-
-        ))}
-      </div>
-
     </div>
   );
 };

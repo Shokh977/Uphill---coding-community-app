@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Loader } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../UI/Input";
 import { useStoreAuth } from "../store/authStore";
 
@@ -9,10 +9,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useStoreAuth();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
+    navigate('/')
   };
 
   return (
@@ -59,7 +61,7 @@ const Login = () => {
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.97 }}
             type="submit">
-            Sign In
+            {isLoading ? <Loader className="mx-auto spin-animate duration-300"/> : "Sign In"}
           </motion.button>
         </form>
       </div>

@@ -117,6 +117,32 @@ function Navbar({ children }) {
         style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}>
         <ul className="flex flex-col gap-5 p-5 items-center justify-center">
           <Link to="/" onClick={() => handleLinkClick("home")}>
+          <li>
+            <div className="flex flex-col items-center gap-5">
+            {isAuthenticated && user.isVerified ? (
+          <div className="flex items-center gap-4">
+            <Link to="/dashboard">
+              {user.avater ? (
+                <img
+                  src={user.avater}
+                  alt="Profile"
+                  className="w-12 h-12 overflow-hidden rounded-full cursor-pointer"
+                />
+              ) : (
+                <User size={38} className="border dark:border-white  rounded-full p-1" />
+              )}
+            </Link>
+          </div>
+        ) : (
+          <div className="md:flex items-center gap-4 hidden">
+            <button className="border bg py-1.5 px-3 rounded-lg text-lg">
+              <Link to="/login">Login</Link>
+            </button>
+          </div>
+        )}
+              {children}
+            </div>
+          </li>
             <li className="list-none w-full text-center hover:bg-violet-400 p-2 rounded-lg transition-all cursor-pointer">
               Home
             </li>
@@ -136,16 +162,7 @@ function Navbar({ children }) {
               Projects
             </li>
           </Link>
-          <li>
-            <div className="flex flex-col items-center gap-5">
-              <button className="border bg py-1.5 px-3 rounded-lg text-lg">
-                <Link to="/login" onClick={() => setIsOpen(false)}>
-                  Login
-                </Link>
-              </button>
-              {children}
-            </div>
-          </li>
+         
         </ul>
       </div>
     </nav>

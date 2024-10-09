@@ -43,7 +43,7 @@ export default Accordion;
 export function Accordions() {
     return (
       <div className="App max-w-xl mx-auto p-6">
-        <h1 className="text-2xl mb-4">React Accordion with Tailwind</h1>
+        <h1 className="text-2xl font-bold text-gray-500 mb-4">React Accordion with Tailwind</h1>
         
         <Accordion
           title="What is React?"
@@ -117,7 +117,7 @@ export function Accordions() {
   export function AutoClose() {
     return (
       <div className="App max-w-xl mx-auto p-6">
-        <h1 className="text-2xl mb-4">Auto Close Accordion</h1>
+        <h1 className="text-2xl mb-4 text-gray-500 font-semibold">Auto Close Accordion</h1>
         
         <AccordionAutoClose
         title="What is the difference between React and Angular?"

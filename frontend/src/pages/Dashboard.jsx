@@ -4,29 +4,40 @@ import { useStoreAuth } from "../store/authStore";
 import SkeletonPost from "../components/SkeletonPosts";
 import { motion } from "framer-motion";
 import Login from "../auth/Login";
+import { useTodoAuth } from "../store/toDoStore";
+import TodoCard from "../components/todo/TodoCard";
 
 const LikedPosts = lazy(() => import("./LikedPosts"));
 
 const Dashboard = () => {
+  const { todos, fetchTodos } = useTodoAuth();
   const { user, isAuthenticated, checkAuth, logout } = useStoreAuth();
 
   useEffect(() => {
     if (!isAuthenticated) {
       checkAuth();
     }
-  }, [isAuthenticated, checkAuth]);
+    if (user && user.email) {
+      fetchTodos(user);
+    }
+  }, [isAuthenticated, checkAuth, user]);
 
   if (!user) {
     return <Login />;
   }
 
-  const handleLogOut =() =>{
-    logout()
-  }
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const handleLogOut = () => {
+    logout();
+  };
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between bg-white dark:bg-gray-900 shadow-md rounded-lg p-6">
+      <div className="flex md:flex-row flex-col gap-4 justify-between items-center bg-white dark:bg-gray-900 shadow-md rounded-lg p-6">
         <div className="flex items-center space-x-6">
           {user.avatar ? (
             <img
@@ -58,18 +69,33 @@ const Dashboard = () => {
         </div>
         <div>
           <motion.button
-          whileHover={{scale: 1.05}}
-          whileTap={{scale: 0.95}}
-          onClick={handleLogOut}
-
-          className="border dark:border-gray-600 px-3 py-2 rounded-lg">
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleLogOut}
+            className="border dark:border-gray-600 px-3 py-2 rounded-lg">
             logout
           </motion.button>
         </div>
       </div>
 
-      <div className="mt-8">
-        <h3 className="text-xl font-semibold mb-4">Liked Posts</h3>
+      <h1 className="text-xl font-semibold mt-12 text-center">Created Notes</h1>
+      {todos.length === 0 ? (
+        <div className="text-center text-gray-500">No todos available</div>
+      ) : (
+        <div className="todos grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+          {todos.map((todo) => (
+            <div className="border border-gray-500 rounded p-3 max-w-md shadow-lg">
+              <h2 className="font-semibold dark:text-gray-300 text-gray-700 text-xl">{todo.title}</h2>
+              <p className="text-gray-500">  {formatDate(todo.createdAt)}</p>
+              <p className="mt-2 text-sm text-gray-300">{todo.content.substring(0, 30)}</p>
+              <p className="text-violet-500">{todo.tags}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-8 flex flex-col justify-center items-center">
+        <h3 className="text-xl font-semibold mb-4 ">Liked Posts</h3>
         <Suspense
           fallback={
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

@@ -6,7 +6,7 @@ import Todo from "../components/todo/ToDo";
 export default function Home() {
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <Hero />
       <JsInterective />
         <Todo />

@@ -36,13 +36,12 @@ const JsInterective = () => {
   };
 
   return (
-    <div className="button-showcase py-4 my-[7.5rem]">
-      <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-12">
+    <div className="button-showcase py-4 my-20">
+      <h1 className=" text-2xl font-bold text-center  dark:text-gray-300 text-gray-500">
         Interactive Components
       </h1>
       {/* Buttons */}
       <h2 className="mt-8 text-2xl dark:text-gray-300">Buttons</h2>
-
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
         <button className="py-2 px-3 bg-green-500 text-white rounded hover:scale-110 transform transition-transform duration-300 ease-in-out">
           Bouncing
@@ -121,26 +120,27 @@ const JsInterective = () => {
         </button>
       </div>
 
+      {/* Cards */}
+
       <h2 className="mb-8 text-2xl dark:text-gray-300">Cards</h2>
       <Cards />
 
-      <div className="dark:bg-gray-900  h-auto">
+      <div className="dark:bg-gray-900  rounded-md">
         <CardsComponent />
       </div>
       <div className="mb-8 mx-auto">
-      <h2 className="m-8 text-2xl dark:text-gray-300">Responsive design</h2>
+        <h2 className="m-8 text-2xl md:block hidden dark:text-gray-300">Responsive design</h2>
 
         <ResponsiveContainer />
       </div>
       <h2 className="mt-8 text-2xl dark:text-gray-300">Toast with Tailwind</h2>
-      
-      <Toasts/>
+
+      <Toasts />
       {/* <NotificationSystem/> */}
-      <div className="flex justify-around p-4 dark:bg-gray-900 shadow-lg">
-          <Accordions/>
-      <AutoClose/>
+      <div className="flex md:flex-row flex-col justify-around p-4 dark:bg-gray-900 shadow-lg">
+        <Accordions />
+        <AutoClose />
       </div>
-    
     </div>
   );
 };

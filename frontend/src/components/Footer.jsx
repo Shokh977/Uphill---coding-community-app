@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -47,20 +48,26 @@ export default function Footer() {
           <div>
             <h2 className="text-2xl font-semibold mb-4">Follow Me</h2>
             <div className="flex space-x-6 text-3xl justify-center">
-              <a href="https://github.com" className="hover:text-gray-100">
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://github.com/Shokh977"
+                className="hover:text-gray-500">
                 <FaGithub />
-              </a>
-              <a href="https://linkedin.com" className="hover:text-blue-500">
+              </Link>
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://www.linkedin.com/in/abdulazizov-shokhrukh-b7a6b2225/"
+                className="hover:text-blue-500">
                 <FaLinkedin />
-              </a>
-              <a href="https://twitter.com" className="hover:text-blue-400">
-                <FaTwitter />
-              </a>
-              <a href="https://youtube.com" className="hover:text-red-500">
+              </Link>
+              <Link target="_blank" rel="noopener noreferrer" to="https://www.youtube.com/@shokh_tv"
+              className="hover:text-red-500">
                 <FaYoutube />
-              </a>
+              </Link>
             </div>
-            <p className="mt-4 text-gray-400">Email: Uphill7165@example.com</p>
+            <p className="mt-4 text-gray-400">Email: Uphill7165@gmail.com</p>
           </div>
         </div>
 

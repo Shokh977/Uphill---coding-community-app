@@ -16,6 +16,7 @@ import { ForgotPassword } from "./auth/ForgotPassword";
 import  ResetPasswordPage  from "./auth/ResetPasswordPage";
 import Login from './auth/Login';
 import { SignUp } from './auth/sign-up';
+import TodoDetails from "./components/todo/TodoDetails";
 
 function App() {
   const { checkAuth, isAuthenticated, user, isCheckingAuth } = useStoreAuth();
@@ -53,6 +54,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/verify-email" element={<EmailVerification />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/todo/:id" element={<TodoDetails />} />
             <Route
               path="/reset-password/:token"
               element={<ResetPasswordPage />}

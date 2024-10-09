@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 export default function SearchBar({value, onChange, handleSearch, onClearSearch}) {
   return (
     <div>
-         <div className="flex items-center justify-between p-3 rounded-lg dark:bg-gray-800 bg-gray-200 max-w-[250px]">
+         <div className="flex items-center justify-between p-3 rounded-lg dark:bg-gray-800 bg-gray-100 max-w-[250px]">
           <input
             className="outline-none border-none bg-transparent"
             type="text"
@@ -13,7 +13,7 @@ export default function SearchBar({value, onChange, handleSearch, onClearSearch}
             value={value}
             onChange={onChange}
           />
-        {value ? <MdClose className='size-6 cursor-pointer transition-all duration-300' onClick={onClearSearch}/> : <Search  className="text-violet-500 cursor-pointer transition-all duration-300"/>}
+        <Search  className="text-violet-500 cursor-pointer transition-all duration-300"/>
         </div>
     </div>
   )
