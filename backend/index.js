@@ -18,8 +18,8 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-app.use(express.json()); // allows to parse incoming requests : req.body
-app.use(cookieParser()); // allows us to parse incoming cookies
+app.use(express.json()); 
+app.use(cookieParser()); 
 
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
