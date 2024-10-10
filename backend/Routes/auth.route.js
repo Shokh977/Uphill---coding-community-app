@@ -7,7 +7,7 @@ import {
   resetPassword,
   forgotPassword,
   checkAuth,
-} from "./../Controllers/auth.controller.js";
+} from "../Controllers/auth.controller.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 const router = express.Router();
 

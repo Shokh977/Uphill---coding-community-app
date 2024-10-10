@@ -1,5 +1,5 @@
 import { User } from "../Models/user.model.js";
-import { Todo } from "./../Models/todo.model.js";
+import { Todo } from "../Models/todo.model.js";
 
 export const getTodos = async (req, res) => {
   const { email } = req.body;

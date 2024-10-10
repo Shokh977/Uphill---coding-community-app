@@ -6,7 +6,7 @@ import {
   sendVerificationEmail,
   sendWelcomEmail,
 } from "../mailtrap/emails.js";
-import { User } from "./../Models/user.model.js";
+import { User } from "../Models/user.model.js";
 import crypto from "crypto";
 
 export const signup = async (req, res) => {
