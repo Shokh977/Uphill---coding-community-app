@@ -3,7 +3,7 @@ import { create } from "zustand";
 import axios from "axios";
 
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? "https://uphill-coding-community.onrender.com/" 
+  ? "https://uphill-coding-community.onrender.com" 
   : "http://localhost:5000";
 
 axios.defaults.withCredentials = true;
