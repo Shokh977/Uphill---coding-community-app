@@ -7,14 +7,15 @@ export const useTodoAuth = create((set) => ({
   todos: [],
   error: null,
   isLoading: false,
+  isUpdating: false, // Separate loading state for updates
 
   fetchTodos: async (user) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${API_URL}/getTodo`, { email: user.email });
+      const res = await axios.post(`${API_URL}/getTodo`, { email: user.email }, { withCredentials: true });
       set({ todos: res.data.todos, isLoading: false });
     } catch (error) {
-      console.log(error.message || "Error occurred in fetching todos");
+      console.error(error.message || "Error occurred in fetching todos");
       set({ error: error.message, isLoading: false });
     }
   },
@@ -28,20 +29,20 @@ export const useTodoAuth = create((set) => ({
         tags,
         email: user.email,
         isPinned
-      });
+      }, { withCredentials: true });
 
       set((state) => ({
         todos: [...state.todos, res.data.todo],
         isLoading: false,
       }));
     } catch (error) {
-      console.log(error.message || "Error occurred in adding new todo");
+      console.error(error.message || "Error occurred in adding new todo");
       set({ error: error.message, isLoading: false });
     }
   },
 
   updateTodo: async (todoId, title, content, tags, user, isPinned) => {
-    set({ isLoading: true, error: null });
+    set({ isUpdating: true, error: null }); // Using a separate loading state
     try {
       const res = await axios.put(`${API_URL}/editTodo/${todoId}`, {
         title,
@@ -49,41 +50,41 @@ export const useTodoAuth = create((set) => ({
         tags,
         email: user.email,
         isPinned
-      });
-  
+      }, { withCredentials: true });
+
       set((state) => ({
         todos: state.todos.map((todo) =>
           todo._id === todoId ? { ...todo, ...res.data.updatedTodo } : todo
         ),
-        isLoading: false,
+        isUpdating: false,
       }));
-  
-      setOpen(false);
-  
     } catch (error) {
-      console.log(error.message || "Error occurred in updating todo");
-      set({ error: error.message, isLoading: false });
+      console.error(error.message || "Error occurred in updating todo");
+      set({ error: error.message, isUpdating: false });
     }
   },
 
-
   deleteTodo: async (id, email) => {
-  try {
-    const response = await axios.delete(`${API_URL}/deleteTodo/${id}`, {
-      data: { email },  // Send email in the request body
-    });
+    set({ isLoading: true }); // Optional loading state for delete
+    try {
+      const response = await axios.delete(`${API_URL}/deleteTodo/${id}`, {
+        data: { email },
+      }, { withCredentials: true });
 
-    const data = response.data;  // Access the response data directly
+      const data = response.data;
 
-    if (!data.error) {
-      set((state) => ({
-        todos: state.todos.filter((todo) => todo._id !== id), 
-      }));
-    } else {
-      console.error(data.message); 
+      if (!data.error) {
+        set((state) => ({
+          todos: state.todos.filter((todo) => todo._id !== id),
+          isLoading: false,
+        }));
+      } else {
+        console.error(data.message);
+        set({ error: data.message, isLoading: false }); // Handle error if exists
+      }
+    } catch (error) {
+      console.error('Error deleting todo:', error.message || error);
+      set({ error: error.message, isLoading: false });
     }
-  } catch (error) {
-    console.error('Error deleting todo:', error.message || error); 
-  }
-}
+  },
 }));

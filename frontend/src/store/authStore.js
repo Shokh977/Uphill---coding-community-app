@@ -61,7 +61,9 @@ export const useStoreAuth = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true, error: null });
     try {
-      const res = await axios.get(`${API_URL}/api/auth/check-auth`);
+      const res = await axios.get(`${API_URL}/api/auth/check-auth`, {
+        withCredentials: true,
+      });
       set({
         user: res.data.user,
         isAuthenticated: true,
@@ -78,7 +80,7 @@ export const useStoreAuth = create((set) => ({
       const res = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
-      });
+      }, { withCredentials: true });
       set({
         user: res.data.user,
         isAuthenticated: true,
