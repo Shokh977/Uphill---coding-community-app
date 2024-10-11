@@ -2,8 +2,9 @@ import { create } from "zustand";
 
 import axios from "axios";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? "https://uphill-coding-community.onrender.com/" 
+  : "http://localhost:5000";
 
 axios.defaults.withCredentials = true;
 
@@ -18,7 +19,7 @@ export const useStoreAuth = create((set) => ({
   signup: async (email, password, name) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${backendUrl}/api/auth/signup`, {
+      const res = await axios.post(`${API_URL}/api/auth/signup`, {
         email,
         password,
         name,
@@ -37,7 +38,7 @@ export const useStoreAuth = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const res = await axios.post(
-        `${backendUrl}/api/auth/verify-email`,
+        `${API_URL}/api/auth/verify-email`,
         { code },
         {
           withCredentials: true,
@@ -60,7 +61,7 @@ export const useStoreAuth = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true, error: null });
     try {
-      const res = await axios.get(`${backendUrl}/api/auth/check-auth`);
+      const res = await axios.get(`${API_URL}/api/auth/check-auth`);
       set({
         user: res.data.user,
         isAuthenticated: true,
@@ -74,7 +75,7 @@ export const useStoreAuth = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${backendUrl}/api/auth/login`, {
+      const res = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -96,7 +97,7 @@ export const useStoreAuth = create((set) => ({
   logout: async () => {
     set({ isLoading: true, error: null });
     try {
-      await axios.post(`${backendUrl}/api/auth/logout`);
+      await axios.post(`${API_URL}/api/auth/logout`);
       set({
         user: null,
         isAuthenticated: false,
@@ -114,7 +115,7 @@ export const useStoreAuth = create((set) => ({
   forgotPassword: async (email) => {
     set({ isLoading: true, error: null, message: null });
     try {
-      const res = await axios.post(`${backendUrl}/api/auth/forgot-password`, {
+      const res = await axios.post(`${API_URL}/api/auth/forgot-password`, {
         email,
       });
       set({ message: res.data.message, isLoading: false });
@@ -131,7 +132,7 @@ export const useStoreAuth = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const res = await axios.post(
-        `${backendUrl}/api/auth/reset-password/${token}`,
+        `${API_URL}/api/auth/reset-password/${token}`,
         { password }
       );
       set({ isLoading: false });
