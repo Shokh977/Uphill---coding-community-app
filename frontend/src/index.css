@@ -7,13 +7,13 @@
     margin: 0;
 }
 
-    :root {
-        --light: 
-          radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.6), transparent 60%),
-          radial-gradient(circle at 80% 80%, rgba(135, 206, 250, 0.5), transparent 60%),
-          radial-gradient(circle at 50% 50%, rgba(144, 238, 144, 0.5), transparent 50%),
-          rgba(255, 255, 255, 0.95);
-      }
-      
-
+body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  .some-class {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+  }
+  
   
