@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import axios from "axios";
 
-const API_URL = "https://uphill-coding-community.onrender.com" 
+const API_URL = "https://uphill-coding-community.onrender.com";
 
 axios.defaults.withCredentials = true;
 
@@ -13,15 +13,18 @@ export const useStoreAuth = create((set) => ({
   isLoading: false,
   isCheckingAuth: true,
 
-
   signup: async (email, password, name) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${API_URL}/api/auth/signup`, {
-        email,
-        password,
-        name,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/auth/signup`,
+        {
+          email,
+          password,
+          name,
+        },
+        { withCredentials: true }
+      );
       set({ user: res.data.user, isAuthenticated: true, isLoading: false });
     } catch (error) {
       set({
@@ -75,10 +78,14 @@ export const useStoreAuth = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${API_URL}/api/auth/login`, {
-        email,
-        password,
-      }, { withCredentials: true });
+      const res = await axios.post(
+        `${API_URL}/api/auth/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
       set({
         user: res.data.user,
         isAuthenticated: true,
