@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 export default function AboutMe() {
-  const [isEnglish, setIsEnglish] = useState(true); // Toggle between English and Korean
+  const [isEnglish, setIsEnglish] = useState(true); 
 
   const toggleLanguage = () => {
     setIsEnglish(!isEnglish);
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 p-8 rounded-lg">
+    <div className="bg-gray-100 dark:bg-gray-900 p-2 rounded-lg">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
+        <h1 className="md:text-4xl text-3xl font-bold text-gray-800 dark:text-gray-200">
           About Me
         </h1>
         <button
@@ -42,14 +42,14 @@ export default function AboutMe() {
               technology was always in the background. I found myself drawn to
               the world of code and design, where I could combine logic with
               creativity.
-              <div className="py-2"></div>
+              <span className="py-2"></span>
               After teaching English in Uzbekistan and Korea, I realized I
               wanted to focus on building the future of the web. I took a deep
               dive into frontend development, where I began learning HTML, CSS,
               JavaScript, and eventually frameworks like React and Next.js. Web
               development became my medium to bring ideas to life, and I ve
               never looked back.
-              <div className="py-2"></div>
+              <span className="py-2"></span>
               Every day is a new opportunity for me to learn something exciting,
               whether it s enhancing a user interface or diving deep into
               backend technologies like Node.js and MongoDB. I enjoy turning

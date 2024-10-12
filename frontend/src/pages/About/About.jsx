@@ -15,7 +15,7 @@ export default function About() {
     <div>
       <div className="flex flex-col items-center h-auto bg-gray-100 rounded-lg dark:bg-gray-900 gap-6 md:gap-[100px] p-4">
         <div className=" mx-auto">
-          <img className="rounded-full w-[200px] m-5" src={portfolio} alt="" />
+          <img className="rounded-full w-[150px] m-5" src={portfolio} alt="" />
           <h1 className="flex flex-col text-center">
             <span className="text-2xl font-semibold">I'm 쇼크룩</span>
             <span className="text-4xl font-bold text-violet-600">Frontend</span>
@@ -51,7 +51,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-8 md:p-16">
+      <div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-2 md:p-16">
         {/* About Section */}
         <section className="my-16">
           <AboutMe />

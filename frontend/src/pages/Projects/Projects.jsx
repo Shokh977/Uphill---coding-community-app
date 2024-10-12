@@ -31,12 +31,12 @@ const Project = () => {
               </p>
               <p className="text-sm sm:text-base">{project.description}</p>
               <div className="flex gap-6 items-center">
-                <p className="text-violet-500 text-2xl cursor-pointer">
+               {project.http && <p className="text-violet-500 text-2xl cursor-pointer">
                   <Link className="items-center flex gap-2" to = {project.http}>
                                     visit <LinkIcon />
 
                   </Link>
-                </p>
+                </p>}
                 <a
                   className="hover:text-violet-500 transition-transform duration-200"
                   href={project.link}>

@@ -58,7 +58,6 @@ export const projectsData = [
       "/Uzbekistan/uzb.png",
     ],
     link: "https://github.com/Shokh977/Uzbekistan-guide",
-    http:" "
   },
   {
     name: "GetIt- Car renting App",
@@ -72,6 +71,5 @@ export const projectsData = [
       "/CarRent/CarRent.png",
     ],
     link: "https://github.com/Shokh977/GetIt---cars-renting-app",
-    http: ""
   },
 ];
