@@ -31,7 +31,7 @@ export default function Home() {
 
       <div className="w-full  md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
         {" "}
-        <div className=" flex flex-col bg-green-500 dark:bg-[#232A3C] items-center justify-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
+        <div className=" flex flex-col bg-yellow-500 dark:bg-[#232A3C] items-center justify-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
           <Link to="/projects" className="flex flex-col items-center">
             <h1 className="text-white font-semibold text-xl md:text-4xl m-2">
               Projects
