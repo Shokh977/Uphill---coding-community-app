@@ -24,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
+app.use('/', (req, res) => res.send('API is working'));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
