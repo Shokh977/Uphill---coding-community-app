@@ -1,8 +1,15 @@
 node_modules/
+<<<<<<< HEAD
 dist/
  build/
  package.json
  
+=======
+ dist/
+ build/
+package-lock.json/
+package.json
+>>>>>>> a09d12c32a45ad154334450aefae46b92d2a576b
 
 .env
 .env.local
