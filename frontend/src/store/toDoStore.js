@@ -8,7 +8,7 @@ export const useTodoAuth = create((set) => ({
   todos: [],
   error: null,
   isLoading: false,
-  isUpdating: false, // Separate loading state for updates
+  isUpdating: false, 
 
   fetchTodos: async (user) => {
     set({ isLoading: true, error: null });
@@ -43,7 +43,7 @@ export const useTodoAuth = create((set) => ({
   },
 
   updateTodo: async (todoId, title, content, tags, user, isPinned) => {
-    set({ isUpdating: true, error: null }); // Using a separate loading state
+    set({ isUpdating: true, error: null }); 
     try {
       const res = await axios.put(`${API_URL}/editTodo/${todoId}`, {
         title,
@@ -66,7 +66,7 @@ export const useTodoAuth = create((set) => ({
   },
 
   deleteTodo: async (id, email) => {
-    set({ isLoading: true }); // Optional loading state for delete
+    set({ isLoading: true }); 
     try {
       const response = await axios.delete(`${API_URL}/deleteTodo/${id}`, {
         data: { email },

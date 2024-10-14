@@ -48,7 +48,6 @@ export default function ToDo() {
     }
   };
 
-
   const filteredTodos = todos.filter(
     (todo) =>
       todo.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
