@@ -31,11 +31,8 @@ export default function Home() {
 
       <div className="w-full  md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
         {" "}
-<<<<<<< HEAD
-        <div className=" flex flex-col bg-red-500 dark:bg-[#232A3C] items-center justify-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
-=======
         <div className=" flex flex-col bg-yellow-500 dark:bg-[#232A3C] items-center justify-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
->>>>>>> 89d56c4109b112a3345217ea60e3fe76a2240c8c
+
           <Link to="/projects" className="flex flex-col items-center">
             <h1 className="text-white font-semibold text-xl md:text-4xl m-2">
               Projects
@@ -45,9 +42,8 @@ export default function Home() {
               alt="Projects"
               className="w-[100px] md:w-[250px]"
             />{" "}
-          </Link>{" "}
-        </div>
-        <div className="bg-[#d4c9b2] dark:bg-[#232A3C]  flex flex-col justify-center items-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
+          </Link>{" "}        </div>
+        <div className = "bg-[#d4c9b2] dark:bg-[#232A3C]  flex flex-col justify-center items-center gap-2 rounded-lg p-2 cursor-pointer transition-transform duration-300 hover:scale-105">
           <Link to="/blog" className="flex flex-col items-center">
             <h1 className="text-white font-semibold text-xl md:text-4xl m-2">
               Blogs
