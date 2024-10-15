@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import axios from "axios";
 
-const API_URL = "https://uphill-coding-community.onrender.com";
+const API_URL = "https://api.uphill-tech.com";
 
 axios.defaults.withCredentials = true;
 
@@ -113,7 +113,7 @@ export const useStoreAuth = create((set) => ({
       });
     } catch (error) {
       set({
-        error: error.res.data.message || "Error logging out",
+        error: error.res?.data?.message || "Error logging out",
         isLoading: false,
       });
       throw error;

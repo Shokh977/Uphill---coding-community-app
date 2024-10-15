@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "https://uphill-coding-community.onrender.com/api/todos";
+const API_URL = "https://api.uphill-tech.com/api/todos";
 
 
 export const useTodoAuth = create((set) => ({
