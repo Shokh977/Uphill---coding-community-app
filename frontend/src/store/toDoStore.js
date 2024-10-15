@@ -1,11 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-<<<<<<< HEAD
-const API_URL = "https://api.uphill-tech.com";
-=======
 const API_URL = "https://api.uphill-tech.com/api/todos";
->>>>>>> a09d12c32a45ad154334450aefae46b92d2a576b
 
 
 export const useTodoAuth = create((set) => ({
