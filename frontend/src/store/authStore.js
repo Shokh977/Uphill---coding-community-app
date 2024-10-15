@@ -113,7 +113,7 @@ export const useStoreAuth = create((set) => ({
       });
     } catch (error) {
       set({
-        error: error.res.data.message || "Error logging out",
+        error: error.res?.data?.message || "Error logging out",
         isLoading: false,
       });
       throw error;
