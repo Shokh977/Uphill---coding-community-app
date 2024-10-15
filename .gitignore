@@ -3,6 +3,10 @@ node_modules/
  build/
 package-lock.json/
 package.json
+<<<<<<< HEAD
+=======
+.git.zip
+>>>>>>> 89d56c4109b112a3345217ea60e3fe76a2240c8c
 
 .env
 .env.local
