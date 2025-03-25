@@ -11,13 +11,10 @@ import crypto from "crypto";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
-
-  // check if all fields are filled
   try {
     if (!email || !password || !name) {
       throw new Error("All fields are required to be filled in");
     }
-
     //  check if user is already exist. If email exists, user will be exist
     // if your exist we need to return request (res.status().json())
 
@@ -51,8 +48,6 @@ export const signup = async (req, res) => {
     generateTokenAndSetCookie(res, user._id);
 
     await sendVerificationEmail(user.email, verificationToken);
-
-    console.log(user, "user");
 
     res.status(201).json({
       success: true,

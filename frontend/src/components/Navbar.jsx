@@ -1,4 +1,4 @@
-import { Menu, User } from "lucide-react";
+import { Menu, User, Code } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useStoreAuth } from "../store/authStore";
@@ -11,6 +11,7 @@ function Navbar({ children }) {
   const [active, setActive] = useState("home");
   const { isAuthenticated, user } = useStoreAuth();
   const [showModal, setShowModal] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (active === "blog") {
@@ -23,6 +24,23 @@ function Navbar({ children }) {
       setShowModal(false); 
     }
   }, [active]); 
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const closeModal = () => setShowModal(false);
 
@@ -51,12 +69,16 @@ function Navbar({ children }) {
       </ReactModal>
 
       {/* Navbar */}
-      <nav className="flex md:justify-around justify-between fixed px-4 items-center my-5 z-10 w-[80%] dark:bg-black bg-opacity-50 backdrop-blur-lg border border-violet-300 border-opacity-20 rounded-lg shadow-lg p-4">
+      <nav className={`flex md:justify-around justify-between fixed px-4 items-center my-5 z-50 w-[80%] 
+        ${scrolled 
+          ? 'dark:bg-gray-900/95 bg-white/95 shadow-lg' 
+          : 'dark:bg-black bg-opacity-50 backdrop-blur-lg border border-violet-300 border-opacity-20'} 
+        rounded-lg shadow-lg p-4 transition-all duration-300`}>
         <div>
           <NavLink to="/">
             <h1 className="text-2xl">
               <span className="text-violet-600 font-bold">Up</span>
-              <span className="font-bold">Hill</span>
+              <span className="font-bold dark:text-white">Hill</span>
             </h1>
           </NavLink>
         </div>
@@ -109,6 +131,19 @@ function Navbar({ children }) {
               }`}
               to="/projects">
               Projects
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => handleLinkClick("templates")}
+              className={`inline-block pb-1 transition-all duration-300 ease-in-out flex items-center gap-1 ${
+                active === "templates"
+                  ? "underline decoration-4 rounded-full decoration-violet-600"
+                  : "underline decoration-transparent"
+              }`}
+              to="/templates">
+              <Code size={16} />
+              Templates
             </NavLink>
           </li>
         </ul>
@@ -170,6 +205,12 @@ function Navbar({ children }) {
             <Link to="/projects" onClick={() => handleLinkClick("projects")}>
               <li className="list-none w-full text-center hover:bg-violet-400 p-2 rounded-lg transition-all cursor-pointer">
                 Projects
+              </li>
+            </Link>
+            <Link to="/templates" onClick={() => handleLinkClick("templates")}>
+              <li className="list-none w-full text-center hover:bg-violet-400 p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center gap-2">
+                <Code size={16} />
+                Templates
               </li>
             </Link>
           </ul>
