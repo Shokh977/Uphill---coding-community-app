@@ -1,13 +1,15 @@
+import tailwind3D from "@xpd/tailwind-3dtransforms";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Update this path to match your project structure
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
         'dark': "#1a1a2e",
-        "light" : 'linear-gradient(90deg, #d8b4fe, #fbcfe8)'
+        "light": 'linear-gradient(90deg, #d8b4fe, #fbcfe8)',
       },
       perspective: {
         'none': 'none',
@@ -21,5 +23,5 @@ export default {
     },
   },
   darkMode: 'class',
-  plugins: [require("@xpd/tailwind-3dtransforms")], 
+  plugins: [tailwind3D],
 };
