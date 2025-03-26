@@ -24,13 +24,10 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
-<<<<<<< HEAD
 app.use('/', (req, res) => {
   res.send('API is working');
 });
-=======
 app.use('/', (req, res) => res.send('API is working'));
->>>>>>> 89d56c4109b112a3345217ea60e3fe76a2240c8c
 
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
